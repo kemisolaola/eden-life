@@ -30,7 +30,7 @@
     <v-lazy
         v-model="isActive"
         :options="{
-          threshold: .5
+          threshold: .20
         }"
         min-height="200"
         transition="fade-transition"
@@ -56,22 +56,16 @@ export default {
       isLoading: false
     }
   },
-  mounted () {
-    this.isLoading = true
-    if (!localStorage.getItem('DOGGO_LIST')) {
-      this.isLoading = false
-      this.fetchDogs()
-      this.isLoading = false
-      this.breedList = this.getDogs
-    }
-    this.isLoading = false
-    this.fetchDogsImages(this.selectedDog)
-  },
   computed: {
     ...mapGetters([
       'getDogs',
       'getDogImages'
     ])
+  },
+  mounted () {
+    this.fetchDogs()
+    this.breedList = this.getDogs
+    this.fetchDogsImages(this.selectedDog)
   },
   methods: {
     ...mapActions([
