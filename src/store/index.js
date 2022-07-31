@@ -30,6 +30,7 @@ export default new Vuex.Store({
       const res = await response.json()
       console.log(res)
       commit('SET_DOGS', res.message)
+      localStorage.setItem('DOGGO_LIST', JSON.stringify(res.message))
     },
     async fetchDogsImages ({ commit }, breed) {
       const url = `https://dog.ceo/api/breed/${breed}/images`
