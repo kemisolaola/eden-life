@@ -4,7 +4,7 @@
     <v-col cols="12" md="3">
       <select @change="fetchDogsByBreed" v-model="selectedDog" class="select-field pl-2" >
       <option value="" default> Select Dog</option>
-        <option v-for="(dogs, name, index) in breedList" :key="index" :value="name">{{name.toUpperCase()}}</option>
+        <option v-for="(dogs, name, index) in getDogs" :key="index" :value="name">{{name.toUpperCase()}}</option>
       </select>
     </v-col>
   </v-row>
@@ -52,7 +52,6 @@ export default {
     return {
       isActive: false,
       selectedDog: 'hound',
-      breedList: JSON.parse(localStorage.getItem('DOGGO_LIST')),
       isLoading: false
     }
   },
