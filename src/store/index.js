@@ -31,8 +31,8 @@ export default new Vuex.Store({
       console.log(res)
       commit('SET_DOGS', res.message)
     },
-    async fetchDogsImages ({ commit }) {
-      const url = 'https://dog.ceo/api/breed/hound/images'
+    async fetchDogsImages ({ commit }, breed) {
+      const url = `https://dog.ceo/api/breed/${breed}/images`
       const response = await fetch(url, {
         method: 'GET'
       })
